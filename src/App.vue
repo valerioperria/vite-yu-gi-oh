@@ -8,7 +8,7 @@ import CardList from "./components/CardList.vue";
 export default {
   data() {
     return {
-      store
+      store,
     };
   },
   created() {
