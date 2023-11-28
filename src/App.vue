@@ -12,10 +12,8 @@ export default {
     };
   },
   created() {
-    this.store.loading = true;
     axios.get(this.store.apiUrl).then((resp) => {
       this.store.cards = resp.data.data;
-      this.store.loading = false;
     });
   },
   components: { AppHeader, CardList }
