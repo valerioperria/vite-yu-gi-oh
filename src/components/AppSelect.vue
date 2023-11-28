@@ -1,8 +1,10 @@
 <script>
 import { store } from "../store";
 export default {
-    props: {
-        card: Object,
+    data() {
+        return {
+            store,
+        };
     },
 }
 </script>
