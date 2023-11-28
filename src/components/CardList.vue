@@ -1,4 +1,5 @@
 <script>
+import axios from "axios";
 import { store } from "../store";
 import AppCard from "./AppCard.vue"
 import AppFound from "./AppFound.vue";
@@ -10,13 +11,30 @@ export default {
             store,
         };
     },
+
     components: { AppCard, AppFound, AppSelect },
+
+    methods: {
+
+        selection() {
+            axios
+                .get("https://db.ygoprodeck.com/api/v7/cardinfo.php", {
+                    params: {
+                        archetype: this.store.selected,
+                    }
+                })
+                .then((resp) => {
+                    this.store.cards = resp.data.data;
+                })
+            console.log(this.store.selected);
+        },
+    },
 }
 </script>
 
 <template>
     <div class="container">
-        <AppSelect />
+        <AppSelect @performSelection="selection" />
         <div class="small_container">
             <AppFound />
             <div class="wrapper">

@@ -10,8 +10,10 @@ export default {
 </script>
 
 <template>
-    <select name="" id="">
-        <option value="">Alien</option>
+    <select @change="$emit('performSelection')" v-model="store.selected">
+        <option value="Ancient Gear">Ancient Gear</option>
+        <option value="Alien">Alien</option>
+        <option value="Ally of Justice">Ally of Justice</option>
     </select>
 </template>
 
